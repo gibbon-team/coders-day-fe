@@ -7,7 +7,7 @@ import { Root } from "./root.component";
 const lifecycles = singleSpaReact({
   React,
   ReactDOM,
-  loadRootComponent: props => Promise.resolve(() => <Root {...props} />),
+  loadRootComponent: (props) => Promise.resolve(() => <Root {...props} />),
   domElementGetter,
 });
 
@@ -16,10 +16,10 @@ export const unmount = lifecycles.unmount;
 export const mount = lifecycles.mount;
 
 function domElementGetter() {
-  let el = document.getElementById('app');
+  let el = document.getElementById("app");
   if (!el) {
-    el = document.createElement('div');
-    el.id = 'app';
+    el = document.createElement("div");
+    el.id = "app";
     document.body.appendChild(el);
   }
 
