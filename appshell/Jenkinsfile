@@ -1,34 +1,55 @@
 pipeline {
     agent any
+    environment {
+        micro_frontend_dir = 'appshell'
+    }
 
     stages {
         stage ('Check Yarn Availability') {
             steps {
-                sh "yarn --version"
+                sh "pwd"
+                dir('${env.WORKSPACE}/'+micro_frontend_dir) {
+                    sh "pwd"
+                    sh "yarn --version"
+                }
             }
         }
 
          stage ('Install dependencies') {
             steps {
-                sh "yarn  install"
+                sh "pwd"
+                dir('${env.WORKSPACE}/'+micro_frontend_dir) {
+                    sh "pwd"
+                    sh "yarn  install"
+                }
             }
         }
 
          stage ('Run tests') {
             steps {
-                sh "yarn test"
+                sh "pwd"
+                dir('${env.WORKSPACE}/'+micro_frontend_dir) {
+                    sh "pwd"
+                    sh "yarn test"
+                }
             }
         }
 
          stage ('Build package') {
             steps {
-                sh "yarn build"
+                sh "pwd"
+                dir('${env.WORKSPACE}/'+micro_frontend_dir) {
+                    sh "pwd"
+                    sh "yarn build"
+                }
             }
         }
 
          /*stage ('Send package to aws') {
             steps {
-                sh "aws s3 sync "
+                dir(micro_frontend_dir) {
+                    sh "aws s3 sync "
+                }
             }
         }*/
     }

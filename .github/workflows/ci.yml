@@ -2,7 +2,8 @@ name: trigger jenkins job
 on:
   push:
     branches:
-      master
+      - master
+      - ci_test
 jobs:
 
   build:
