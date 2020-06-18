@@ -6,7 +6,7 @@ export type Quiz = {
 }
 
 export type SingleQuestion = {
-    question: string;
+    description: string;
     answers: Answer[];
 };
 
@@ -17,10 +17,12 @@ export type Answer = {
 
 const optionGET = {
     method: "GET",
+    headers: new Headers({ 'Content-Type': 'application/json' }),
 }
 
 const optionPOST = (body: Quiz) => ({
     method: "POST",
+    headers: new Headers({ 'Content-Type': 'application/json' }),
     body: JSON.stringify(body),
 })
 

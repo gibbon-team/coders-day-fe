@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import {
-    Container,
     FormControl,
     InputLabel,
     Input,
@@ -13,7 +12,7 @@ import { postQuiz, SingleQuestion } from "../../../service/quiz";
 const useStyles = makeStyles((theme: Theme) => ({
     form: {
         width: "50%",
-        margin: "0 auto",
+        margin: "5rem auto",
         display: "flex",
         justifyContent: "center",
         flexDirection: "column",
@@ -40,7 +39,7 @@ export const QuizForm = () => {
 
     const nextStep = () => {
         const nextQuestion: SingleQuestion = {
-            question: question.current.value,
+            description: question.current.value,
             answers: [
                 { description: answer1.current.value, isCorrect: true },
                 { description: answer2.current.value, isCorrect: false },
@@ -60,44 +59,41 @@ export const QuizForm = () => {
 
     const submit = (e) => {
         e.preventDefault();
-        nextStep();
         postQuiz({ name: quizName.current.value, questions });
     };
 
     return (
-        <Container>
-            <form className={classes.form} onSubmit={submit}>
-                <FormControl>
-                    <InputLabel>Quiz name</InputLabel>
-                    <Input inputRef={quizName} name="quizName"></Input>
-                </FormControl>
-                <FormControl>
-                    <InputLabel>Question</InputLabel>
-                    <Input inputRef={question} name="question"></Input>
-                </FormControl>
-                <FormControl>
-                    <InputLabel>Answer 1</InputLabel>
-                    <Input inputRef={answer1} name="answer1"></Input>
-                </FormControl>
-                <FormControl>
-                    <InputLabel>Answer 2</InputLabel>
-                    <Input inputRef={answer2} name="answer2"></Input>
-                </FormControl>
-                <FormControl>
-                    <InputLabel>Answer 3</InputLabel>
-                    <Input inputRef={answer3} name="answer3"></Input>
-                </FormControl>
-                <FormControl>
-                    <InputLabel>Answer 4</InputLabel>
-                    <Input inputRef={answer4} name="answer4"></Input>
-                </FormControl>
-                <div className={classes.buttons}>
-                    <Button type="reset">Clear</Button>
-                    <Button type="submit">Submit</Button>
-                    <Button onClick={nextStep}>Next</Button>
-                </div>
-            </form>
-        </Container>
+        <form className={classes.form} onSubmit={submit}>
+            <FormControl>
+                <InputLabel>Quiz name</InputLabel>
+                <Input inputRef={quizName} name="quizName"></Input>
+            </FormControl>
+            <FormControl>
+                <InputLabel>Question</InputLabel>
+                <Input inputRef={question} name="question"></Input>
+            </FormControl>
+            <FormControl>
+                <InputLabel>Answer 1</InputLabel>
+                <Input inputRef={answer1} name="answer1"></Input>
+            </FormControl>
+            <FormControl>
+                <InputLabel>Answer 2</InputLabel>
+                <Input inputRef={answer2} name="answer2"></Input>
+            </FormControl>
+            <FormControl>
+                <InputLabel>Answer 3</InputLabel>
+                <Input inputRef={answer3} name="answer3"></Input>
+            </FormControl>
+            <FormControl>
+                <InputLabel>Answer 4</InputLabel>
+                <Input inputRef={answer4} name="answer4"></Input>
+            </FormControl>
+            <div className={classes.buttons}>
+                <Button type="reset">Clear</Button>
+                <Button type="submit">Submit</Button>
+                <Button onClick={nextStep}>Next</Button>
+            </div>
+        </form>
     );
 };
 

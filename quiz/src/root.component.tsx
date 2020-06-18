@@ -1,5 +1,12 @@
 import React from "react";
+import Quiz from "./components/quiz/form/Quiz";
+import { Camera } from "./components/quiz/camera/Camera";
 
-export default function Root(props) {
-  return <section>{props.name} is mounted!</section>;
-}
+export const Root = (props) => {
+  return (
+    <div style={{ width: '80%', display: 'flex', justifyContent: 'space-between', margin: '0 auto', minHeight: '80%' }}>
+      <Quiz />
+      <Camera />
+    </div>
+  );
+};
