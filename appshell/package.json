@@ -4,7 +4,13 @@
     "lint": "eslint src --ext js,ts,tsx",
     "test": "jest",
     "format": "prettier --write './**'",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+	"run": "concurrently \"yarn runAppshell\" \"yarn runApp\" \"yarn runQuiz\"",
+	
+	"update" : "./all.bat",
+	"runAppshell": "yarn start",
+    "runApp": "yarn --cwd ../app start ",
+    "runQuiz": "yarn --cwd ../quiz start"
   },
   "husky": {
     "hooks": {
