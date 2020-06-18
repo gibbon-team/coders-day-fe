@@ -1,6 +1,8 @@
 pipeline {
-    def micro_frontend_dir = 'appshell'
     agent any
+    environment {
+        micro_frontend_dir = 'appshell'
+    }
 
     stages {
         stage ('Check Yarn Availability') {
