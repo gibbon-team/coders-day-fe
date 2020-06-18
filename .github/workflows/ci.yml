@@ -15,4 +15,4 @@ jobs:
         url: "http://${{ secrets.JENKINS_IP }}/"
         user: "${{ secrets.JENKINS_USER }}"
         token: ${{ secrets.JENKINS_TOKEN }}
-        job: "${{ secrets.JENKINS_JOB }}"
+        job: "${{ secrets.JENKINS_JOBS }}"
