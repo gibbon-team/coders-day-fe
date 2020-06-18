@@ -3,8 +3,10 @@ pipeline {
 
     stages {
         stage ('Check Yarn Availability') {
-            steps {
-                sh "yarn --version"
+            dir('appshell') {
+                steps {
+                    sh "yarn --version"
+                }
             }
         }
 

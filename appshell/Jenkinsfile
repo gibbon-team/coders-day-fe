@@ -2,34 +2,36 @@ pipeline {
     agent any
 
     stages {
-        stage ('Check Yarn Availability') {
-            steps {
-                sh "yarn --version"
+        dir('appshell') {
+            stage ('Check Yarn Availability') {
+                steps {
+                    sh "yarn --version"
+                }
             }
-        }
 
-         stage ('Install dependencies') {
-            steps {
-                sh "yarn  install"
+             stage ('Install dependencies') {
+                steps {
+                    sh "yarn  install"
+                }
             }
-        }
 
-         stage ('Run tests') {
-            steps {
-                sh "yarn test"
+             stage ('Run tests') {
+                steps {
+                    sh "yarn test"
+                }
             }
-        }
 
-         stage ('Build package') {
-            steps {
-                sh "yarn build"
+             stage ('Build package') {
+                steps {
+                    sh "yarn build"
+                }
             }
-        }
 
-         /*stage ('Send package to aws') {
-            steps {
-                sh "aws s3 sync "
-            }
-        }*/
+             /*stage ('Send package to aws') {
+                steps {
+                    sh "aws s3 sync "
+                }
+            }*/
+        }
     }
 }
