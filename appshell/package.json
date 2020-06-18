@@ -50,6 +50,7 @@
     "webpack-config-single-spa-ts": "^1.4.2"
   },
   "dependencies": {
-    "single-spa": "^5.3.1"
+    "single-spa": "^5.3.1",
+    "yarn": "^1.22.4"
   }
 }

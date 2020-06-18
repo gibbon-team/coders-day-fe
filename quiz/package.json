@@ -58,7 +58,5 @@
     "webpack-config-single-spa-ts": "^1.4.2",
     "webpack-config-single-spa-react-ts": "^1.4.2"
   },
-  "dependencies": {
-
-  }
+  "dependencies": {}
 }
