@@ -1,10 +1,11 @@
 pipeline {
+    def micro_frontend_dir = 'quiz'
     agent any
 
     stages {
         stage ('Check Yarn Availability') {
             steps {
-                dir('appshell') {
+                dir(micro_frontend_dir) {
                     sh "yarn --version"
                 }
             }
@@ -12,25 +13,33 @@ pipeline {
 
          stage ('Install dependencies') {
             steps {
-                sh "yarn  install"
+                dir(micro_frontend_dir) {
+                    sh "yarn  install"
+                }
             }
         }
 
          stage ('Run tests') {
             steps {
-                sh "yarn test"
+                dir(micro_frontend_dir) {
+                    sh "yarn test"
+                }
             }
         }
 
          stage ('Build package') {
             steps {
-                sh "yarn build"
+                dir(micro_frontend_dir) {
+                    sh "yarn build"
+                }
             }
         }
 
          /*stage ('Send package to aws') {
             steps {
-                sh "aws s3 sync "
+                dir(micro_frontend_dir) {
+                    sh "aws s3 sync "
+                }
             }
         }*/
     }

@@ -1,37 +1,46 @@
 pipeline {
+    def micro_frontend_dir = 'appshell'
     agent any
 
     stages {
-        dir('appshell') {
-            stage ('Check Yarn Availability') {
-                steps {
+        stage ('Check Yarn Availability') {
+            steps {
+                dir(micro_frontend_dir) {
                     sh "yarn --version"
                 }
             }
+        }
 
-             stage ('Install dependencies') {
-                steps {
+         stage ('Install dependencies') {
+            steps {
+                dir(micro_frontend_dir) {
                     sh "yarn  install"
                 }
             }
+        }
 
-             stage ('Run tests') {
-                steps {
+         stage ('Run tests') {
+            steps {
+                dir(micro_frontend_dir) {
                     sh "yarn test"
                 }
             }
+        }
 
-             stage ('Build package') {
-                steps {
+         stage ('Build package') {
+            steps {
+                dir(micro_frontend_dir) {
                     sh "yarn build"
                 }
             }
+        }
 
-             /*stage ('Send package to aws') {
-                steps {
+         /*stage ('Send package to aws') {
+            steps {
+                dir(micro_frontend_dir) {
                     sh "aws s3 sync "
                 }
-            }*/
-        }
+            }
+        }*/
     }
 }
