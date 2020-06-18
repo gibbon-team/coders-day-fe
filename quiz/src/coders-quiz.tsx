@@ -7,11 +7,21 @@ import Root from "./root.component";
 const lifecycles = singleSpaReact({
   React,
   ReactDOM,
-  rootComponent: Root,
-  errorBoundary(err, info, props) {
-    // Customize the root error boundary for your microfrontend here.
-    return null;
-  },
+  loadRootComponent: props => Promise.resolve(() => <Root {...props} />),
+  domElementGetter,
 });
 
-export const { bootstrap, mount, unmount } = lifecycles;
+export const bootstrap = lifecycles.bootstrap;
+export const unmount = lifecycles.unmount;
+export const mount = lifecycles.mount;
+
+function domElementGetter() {
+  let el = document.getElementById('quiz');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'quiz';
+    document.body.appendChild(el);
+  }
+
+  return el;
+}
