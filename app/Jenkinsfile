@@ -7,5 +7,29 @@ pipeline {
                 sh "yarn --version"
             }
         }
+
+         stage ('Install dependencies') {
+            steps {
+                sh "yarn  install"
+            }
+        }
+
+         stage ('Run tests') {
+            steps {
+                sh "yarn test"
+            }
+        }
+
+         stage ('Build package') {
+            steps {
+                sh "yarn build"
+            }
+        }
+
+         /*stage ('Send package to aws') {
+            steps {
+                sh "aws s3 sync "
+            }
+        }*/
     }
 }
