@@ -5,7 +5,9 @@ pipeline {
     stages {
         stage ('Check Yarn Availability') {
             steps {
+                sh "pwd"
                 dir(micro_frontend_dir) {
+                    sh "pwd"
                     sh "yarn --version"
                 }
             }
@@ -13,7 +15,9 @@ pipeline {
 
          stage ('Install dependencies') {
             steps {
+                sh "pwd"
                 dir(micro_frontend_dir) {
+                    sh "pwd"
                     sh "yarn  install"
                 }
             }
@@ -21,7 +25,9 @@ pipeline {
 
          stage ('Run tests') {
             steps {
+                sh "pwd"
                 dir(micro_frontend_dir) {
+                    sh "pwd"
                     sh "yarn test"
                 }
             }
@@ -29,7 +35,9 @@ pipeline {
 
          stage ('Build package') {
             steps {
+                sh "pwd"
                 dir(micro_frontend_dir) {
+                    sh "pwd"
                     sh "yarn build"
                 }
             }
